@@ -75,6 +75,20 @@ def test_listais_superprime():
     assert listais_superprime([239,17,22]) == [239]
     assert listais_superprime([ 17, 22]) == []
     assert listais_superprime([239]) == [239]
+def cmmdc(m,n):
+    '''
+    calculeaza cmmdc al celor doua numere
+    :param m: nr intreg
+    :param n: nr intreg
+    :return: cmmdl al numerelor
+    '''
+    while m!= n:
+        if m > n:
+            m = m - n
+        else:
+            n = n - m
+    return m
+
 def printMenu():
     print("1. Citire lista")
     print("2. Afisarea tuturor nr. negaive nenule din lista.")
