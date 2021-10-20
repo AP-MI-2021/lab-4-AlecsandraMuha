@@ -42,12 +42,13 @@ def is_prime(n):
     :param n: numarul pe care il verificam daca este prim sau nu
     :return: True daca numarul este prim sau False in caz contrar
     '''
-
+    if n<2:
+        return False
     for d in range(2, int(n ** (1 / 2)) + 1):
         if n % d == 0:
             return False
     return True
-def is_superprime(l):
+def is_superprime(n):
     '''
     verificam daca un numar este superprim sau nu
     :return:True daca numarul este superprim sau False in caz contrar
@@ -60,12 +61,20 @@ def is_superprime(l):
         if is_prime(nr) == False:
             return False
     return True
-def test_is_superprime():
-    assert is_superprime(17) == False
-    assert is_superprime(173) == False
-    assert is_superprime(239) == True
-
-
+def listais_superprime(l):
+    '''
+    verificam daca un numarele din lista sunt superprime sau nu
+    :return:numerele din lista superprime
+    '''
+    rezul = []
+    for x in l:
+        if is_superprime(x) == True:
+            rezul.append(x)
+    return rezul
+def test_listais_superprime():
+    assert listais_superprime([239,17,22]) == [239]
+    assert listais_superprime([ 17, 22]) == []
+    assert listais_superprime([239]) == [239]
 def printMenu():
     print("1. Citire lista")
     print("2. Afisarea tuturor nr. negaive nenule din lista.")
@@ -77,6 +86,8 @@ def printMenu():
     print("6.Iesire")
 def main():
     test_nrnegative_nenule()
+    test_listais_superprime()
+    test_celmaimicnumarcucifraegala()
     l = []
     while True:
         printMenu()
@@ -93,14 +104,18 @@ def main():
             else:
                 print(min)
         elif optiune == "4":
-            print()
+            print(listais_superprime(l))
         elif optiune == "5":
-            print()
+            pass
         elif optiune == "6":
 	        break
         else:
             print("Optiune gresita! Alege alta optiune!")
 
 if __name__ == '__main__':
-    test_
+    test_celmaimicnumarcucifraegala()
+    test_listais_superprime()
+    test_nrnegative_nenule()
+
+
 main()
